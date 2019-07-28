@@ -1,0 +1,208 @@
+<html lang="en">
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lucky Phone Number</title>
+</head>
+<body>
+  
+    <header>
+            <h1>Lucky phone number generator(Work)</h1>
+            <h2>Do you any numbers that you want to exclude?</h2>
+            <input type="checkbox" id="0" value="0" class="message" onclick="if(this.checked){check(0)} else{putback(0)}"> 0 
+            <input type="checkbox" id="1" value="1" class="message" onclick="if(this.checked){check(1)} else{putback(1)}"> 1
+            <input type="checkbox" id="2" value="2" class="message" onclick="if(this.checked){check(2)} else{putback(2)}"> 2
+            <input type="checkbox" id="3" value="3" class="message" onclick="if(this.checked){check(3)} else{putback(3)}"> 3
+            <input type="checkbox" id="4" value="4" class="message" onclick="if(this.checked){check(4)} else{putback(4)}"> 4
+            <input type="checkbox" id="5" value="5" class="message" onclick="if(this.checked){check(5)} else{putback(5)}"> 5
+            <input type="checkbox" id="6" value="6" class="message" onclick="if(this.checked){check(6)} else{putback(6)}"> 6
+            <input type="checkbox" id="7" value="7" class="message" onclick="if(this.checked){check(7)} else{putback(7)}"> 7
+            <input type="checkbox" id="8" value="8" class="message" onclick="if(this.checked){check(8)} else{putback(8)}"> 8
+            <input type="checkbox" id="9" value="9" class="message" onclick="if(this.checked){check(9)} else{putback(9)}"> 9<br><br>
+            <button onclick="uncheck()">Clear</button>
+            <h3>Phone number : <label id="luckNum"></label> </h3>
+            <h3>Solution: <label id="sol"></label> </h3>
+            <button onclick="luck()">Submit</button>
+            
+    </header>
+    <script>
+            var arr = [0,1,2,3,4,5,6,7,8,9];
+            var work =["45", "46", "78", "87", "39", "93", "56"];
+           console.log(arr);
+            function check(num)
+            {
+                for(var i=0;i<arr.length;i++)
+                        {
+                                if(num===arr[i])
+                                {       
+                                        arr.splice(i,1);
+                              console.log(arr);
+
+                                }
+                        }
+            }
+            function putback(num)
+            {
+                    arr.push(num);
+                   console.log(arr);
+
+            }
+            function uncheck()
+            {   
+                console.log("agba");
+                for(var i=0;i<10;i++)
+                    document.getElementById(i).checked = false;
+                    arr = [0,1,2,3,4,5,6,7,8,9];
+                    console.log(arr);
+                
+            }
+           function luck(){
+            //    first 3 numbers
+                var luckNum ="083", luckNumRef,sol,solRef;
+               luckNumRef = document.getElementById('luckNum');
+               solRef = document.getElementById('sol');
+                        // for 5 number in the middle
+                        for(var i=0;i<5;i++)
+                        { 
+                                    // var count to solve the case that match.random doesn't match any value in arr
+                            var count=0;  
+                            var temp =  Math.floor(Math.random() * 10);
+                            for(var j=0;j<arr.length;j++)
+                            {                                                                                          
+                               if(temp===arr[j])
+                                {
+                                   luckNum = luckNum+temp.toString();
+                                   break;
+                                }
+                                 else
+                                 {
+                                        count+=1;
+
+                                 }  
+
+                            }
+                            // console.log("this is i value"+i+"this is j value"+j);
+                            if(count===arr.length)
+                            i=i-1;
+                    }
+                    // for the last two digit in work(array)
+                    var count=0;
+                            for(var i=0;i<2;i++)
+                            {   
+                                    
+                                        for(var j=0;j<work.length;j++)
+                                        {
+                                           
+                                                
+                                                    for(var k=0;k<arr.length;k++)
+                                                    {    
+
+                                                        
+                                                            if(work[j].charAt(0)===arr[k].toString())
+                                                            {
+                                                                
+                                                                for(var l=0;l<arr.length;l++)
+                                                               {
+                                                                         if(work[j].charAt(1)===arr[l].toString())
+                                                                        {
+                                                                            
+                                                                            luckNum+=work[j].toString();
+                                                                            console.log(luckNum);
+                                                                            break;
+                                                                        } 
+                                                                        else
+                                                                        {
+                                                                        count++; 
+                                                                        console.log("this is count"+count);
+                                                                        }
+                                                                 }
+                                                            }
+                                                            else
+                                                            {
+                                                                count++;
+                                                                console.log("this is count : "+count);
+                                                            }
+
+                                                                    if(luckNum.length===10)
+                                                                        {
+                                                                        console.log("leng");
+                                                                        break;
+                                                                        }
+                                                    }
+                                                                    if(luckNum.length===10)
+                                                                        {
+                                                                        console.log("leng2");
+                                                                        break;
+                                                                        }
+
+                                        }
+                                                                    if(luckNum.length===10)
+                                                                        {
+                                                                        console.log("leng3");
+                                                                        break;
+                                                                        }
+                                            console.log( "this is i"+i);
+                                    if(luckNum.length<9)
+                                    {   
+                                        console.log("Ahhh");
+                                        luckNum = "The lucky phone number is unable to generate due to not enough available numbers";
+                                        break;
+                                    }
+                            }
+                       console.log("ddd");
+                            var sum=0;
+                            if(luckNum.length===10)
+                            {
+                                   for(var i=0;i<luckNum.length;i++)
+                                    {
+
+                                        var int = parseInt(luckNum.charAt(i));
+                                        console.log(luckNum.charAt(i));
+                                        console.log("pareint is "+int);    
+                                        sum = sum + int;
+                                        console.log("sum is :"+sum);
+                                                    
+
+                                    }
+                                    console.log("gaaa");
+                                    for(var j=0;j<work.length;j++)
+                                    {
+                                                var theWork;
+                                            console.log("work is"+work[j]);
+                                            console.log("sum is :"+sum);
+                                            if(work[j]==sum)
+                                            {      
+                                                theWork = work[j]; 
+                                                console.log("aaaa");
+                                                
+                                                
+                                                sol = "0"
+                                                for(var i=1;i<luckNum.length;i++)
+                                                {
+                                                        sol =sol+"+"+luckNum.charAt(i);
+                                                        console.log("char at is: "+luckNum.charAt(i))
+                                                }
+                                                    sol = sol + "="+ theWork;
+                                                    solRef.innerText = sol;
+                                                    luckNumRef.innerText = luckNum;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                sol ="your sum which is "+ sum+ " is not equal to the numbers in cases";
+                                                solRef.innerText = sol;
+                                                    luckNum="None";
+                                                    luckNumRef.innerText = luckNum;
+                                            }
+
+                                    }
+                            }
+
+                
+           }
+    
+    </script>
+</body>
+</html>

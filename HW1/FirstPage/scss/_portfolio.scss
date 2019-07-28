@@ -1,0 +1,80 @@
+// Styling for the portfolio section
+.portfolio-box ,.p-0{
+  @import url('https://fonts.googleapis.com/css?family=Sriracha');
+  font-family: 'Sriracha', cursive;
+  src: url('https://fonts.googleapis.com/css?family=Sriracha');
+  @font-face {
+    font-family:'Sriracha', cursive;
+    src: url('https://fonts.googleapis.com/css?family=Sriracha');
+  }
+  position: relative;
+  display: block;
+  max-width: 650px;
+  margin: 0 auto;
+  .portfolio-box-caption {
+    font-family: 'Sriracha',cursive;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    color: $white;
+    background: fade-out($primary, .1);
+    @include transition-all;
+    .portfolio-box-caption-content {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      text-align: center;
+      .project-category,
+      .project-name {
+        @font-face {
+          font-family: 'Sriracha', cursive;
+          src: url('https://fonts.googleapis.com/css?family=Sriracha');
+        }
+        padding: 0 15px;
+        @include Sriracha;
+      }
+      .project-category {
+        @font-face {
+          font-family: 'Sriracha', cursive;
+          src: url('https://fonts.googleapis.com/css?family=Sriracha');
+        }
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .project-name {
+        @font-face {
+          font-family: 'Sriracha', cursive;
+          src: url('https://fonts.googleapis.com/css?family=Sriracha');
+        }
+        font-family: 'Sriracha',cursive;
+        font-size: 18px;
+      }
+    }
+  }
+  &:hover {
+    .portfolio-box-caption {
+      opacity: 1;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  @media (min-width: 768px) {
+    .portfolio-box-caption {
+      .portfolio-box-caption-content {
+        .project-category {
+          font-size: 16px;
+        }
+        .project-name {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

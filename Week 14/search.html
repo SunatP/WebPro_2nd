@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+        <table>
+                <tr>
+                <td>Search Person: </td>
+                <td><input type="text" id="q" size="10"/></td>
+                </tr>
+                </table>
+                <input type="button" value="Search" id="getResult"/><br/>
+                <label id="urlString"></label>
+    <div id="map"></div>
+    <script>
+         var lati =1
+                var lon = 0
+            var searchURL ="http://localhost/week14/Api/index.php"
+                $(document).ready(function() {
+                    $("#getResult").click(function(){
+                        var query = $("#q").val();
+                        console.log(query);
+                        $.getJSON(searchURL, {id: query, action: "get"}, function(jd){
+                            lati  = jd.data[0].placelat
+                            lon = jd.data[0].placelong
+                            console.log(typeof(lati))
+                            initMap()
+                            console.log(jd.data[0].placelat);
+                            });
+                        });
+                });
+      function initMap() {
+        var myLatLng = {lat: Number(lati), lng: Number(lon)};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk8Rq7E9sU5auW9HtCAURdzWjKQrCrkFg&callback=initMap">
+    </script>
+  </body>
+</html>

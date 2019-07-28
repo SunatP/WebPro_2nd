@@ -1,0 +1,25 @@
+<html style="background-color: yellow">
+        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script> 
+
+    <h1 align="center" >-- Thank you For submitting Registration -- ^_^</h1>
+
+    <div id="map" style="width:500px;height:500px;"></div>
+    
+    <script>
+   function myMap() {
+    {
+    var myCenter = new google.maps.LatLng(13.794673, 100.324541);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myCenter, zoom: 17};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter});
+  marker.setMap(map);
+    }
+
+    
+var map = new google.maps.Map(document.getElementById("map"), mapOptions,marker);
+} 
+    </script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>    
+</html>

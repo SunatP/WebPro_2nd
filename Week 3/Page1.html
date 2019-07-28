@@ -1,0 +1,40 @@
+<html>
+    <table border="1" align="center" style="width: 45%;background-color: pink" >
+    <form name="FirstPage"action="./Page2.html" method="GET">
+        <th rowspan="1" colspan="2" ><h1> <br>Please fill in your personal info </h1><br></th>
+           <tr>
+        <td rowspan="1" align="center">ID :</td><td align="left" style="width: 75%"><input type="text" name="ID" placeholder="ID" style="width: 45%" maxlength="7"></td></tr>
+        <tr>
+       <td rowspan="1" align="center"> FirstName :</td> <td align="left" style="width: 75%"><input type="text" name="firstname"placeholder="First Name" style="width: 45%" pattern="[A-Za-z]+"></td></tr>
+
+       <tr>
+            <td rowspan="1" align="center">SurName :</td> <td> <input type="text" name="Surname"placeholder="Surname" style="width: 45%" pattern="[A-Za-z]+"><br> </td>
+    </tr>
+        <tr>
+                <td rowspan="1" align="center">Birthday : </td><td> <input type="date" name="Birthday""style="width: 35%"> <br> </td>
+        </tr>
+        <tr>
+                <td rowspan="1" align="center"> Gender : </td><td><input type="radio" name="sex" value="Male" checked> Male 
+            <input type="radio" name="sex" value="Male"> Female <br/></td>
+        </tr>
+ 
+        <tr>
+                <td rowspan="1" align="center">
+        Hobbies : </td> <td><input type="checkbox" name="Hobbies" value="Play Game">Play Game 
+        <input type="checkbox" name="Hobbies" value="Watch Movie">Watch Movie
+        <input type="checkbox" name="Hobbies" value="Sleep">Sleep
+        <input type="checkbox" name="Hobbies" value="Eat">Eat <br> </td>
+    </tr>
+
+    <tr>
+            <td rowspan="1" align="center">
+        Email : </td> <td><input type="email" placeholder="Example@gmail.com" name="Email"> <br> </td>
+       
+    </tr>
+    <tr align="center">
+            <td colspan="2" rowspan="2"><input type="submit"  name="submit"value="Submit"></td>
+            
+    </tr>
+    </form>
+</table>
+</html>
